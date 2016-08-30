@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script src="vue.min.js"></script>
+    </head>
+
+    <body>
+        <div id="app">
+            <h1>{{ appName }}</h1>
+
+            <h3>Items</h3>
+
+            Nome: <input type="text" v-model="newItem.name">
+            Descrição: <input type="text" v-model="newItem.description">
+            <button v-on:click="addItem(name)">Add item</button>
+
+            <div>
+                <ul>
+                    <li v-for="item in items">
+                        <b>{{ item.name }}</b>
+                        <div>{{ item.description }}<div>
+                        <a href="#">Teste</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </body>
+
+    <script type="text/javascript">
+        var app = new Vue({
+            el: "#app",
+            data: {
+                appName: "Vue JS - App test",
+                newItem: { name: "", description: "" },
+                items: [
+                    { name: "Item 1", description: "Description of item..." },
+                    { name: "Item 2", description: "Description of item..." },
+                    { name: "Item 3", description: "Description of item..." },
+                    { name: "Item 4", description: "Description of item..." },
+                    { name: "Item 5", description: "Description of item..." },
+                    { name: "Item 6", description: "Description of item..." },
+                    { name: "Item 7", description: "Description of item..." }
+                ]
+            },
+            methods: {
+                addItem() {
+                    this.items.push({
+                        name: this.newItem.name,
+                        description: this.newItem.description
+                    });
+
+                    this.newItem.name = "";
+                    this.newItem.description = "";
+
+                    console.log(this.items);
+                },
+                removeItem() {
+                    //..
+                }
+            }
+        });
+    </script>
+</html>
